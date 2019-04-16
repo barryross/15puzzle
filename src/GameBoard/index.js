@@ -1,6 +1,20 @@
 import React, {Component} from 'react'
-
+import shuffle from '../utilities/shuffle'
+import GamePiece from './GamePiece'
+import './styles.scss'
 class GameBoard extends Component {
+
+	state = {
+		pieces: []
+	}
+	componentDidMount = () => {
+		this.setState({pieces:this.generateTiles()})
+	}
+
+	generateTiles = () => {
+		let tiles  = [...Array(16).keys()]
+		return shuffle(tiles)
+	}
 
 	/*
 		State tracks:
@@ -22,10 +36,15 @@ class GameBoard extends Component {
 
 	*/
 
+
 	render(){
+		const { pieces } = this.state
 		return(
 			<section>
 				<h1>15 Puzzle</h1>
+				<div className="GameBoard">
+					{ pieces.map( piece => 	<GamePiece key={piece} num={piece}/> )}
+				</div>
 			</section>
 		)
 	}
