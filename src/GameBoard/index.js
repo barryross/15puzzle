@@ -6,7 +6,8 @@ import './styles.scss'
 class GameBoard extends Component {
 
 	state = {
-		pieces: []
+		pieces: [],
+		count:0
 	}
 
 	componentDidMount = () => {
@@ -26,9 +27,29 @@ class GameBoard extends Component {
 	handleGamePieceClick = (num) => {
 		const { pieces } = this.state
 		// Get location of clicked piece
-		console.log("location of", num, findPosition(pieces, findIdx(pieces, num)))
-		console.log("location of 0", findPosition(pieces, findIdx(pieces, 0)));
-		// Get location of "0"
+		let pidx = findIdx(pieces, num)
+		let zidx = findIdx(pieces, 0)
+		let p = findPosition(pieces, pidx)
+		let z = findPosition(pieces, zidx)
+		// console.log("location of", num, p)
+		// console.log("location of 0", z)
+		if(p.y === z.y && Math.abs(p.x - z.x) === 1){
+			// console.log("should swap with 0, case 1")
+			this.swapPieces(pieces, pidx, zidx)
+		}else if(p.x === z.x && (Math.abs(p.y - z.y) === 1)){
+			// console.log("should swap with 0, case 2")
+			this.swapPieces(pieces, pidx, zidx)
+		}else{
+			console.log("no go!");
+		}
+		
+	}
+
+	swapPieces = (array, idx1, idx2) => {
+		let tmp = array[idx1]
+		array[idx1] = array[idx2]
+		array[idx2] = tmp
+		this.setState({pieces:array})
 	}
 
 	/*
