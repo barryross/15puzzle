@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import shuffle from '../utilities/shuffle'
+import solvability from '../utilities/solvability'
 import GamePiece from './GamePiece'
 import './styles.scss'
 class GameBoard extends Component {
@@ -7,14 +8,22 @@ class GameBoard extends Component {
 	state = {
 		pieces: []
 	}
-	componentDidMount = () => {
-		this.setState({pieces:this.generateTiles()})
-	}
 
+	componentDidMount = () => {
+		let tiles = this.generateTiles();
+		while (!solvability(tiles)){
+			tiles = this.generateTiles()
+		}
+		this.setState({pieces:tiles})
+	
+	}
+  
 	generateTiles = () => {
 		let tiles  = [...Array(16).keys()]
 		return shuffle(tiles)
 	}
+
+	
 
 	/*
 		State tracks:
