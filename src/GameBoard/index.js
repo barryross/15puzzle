@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import shuffle from '../utilities/shuffle'
-import solvability from '../utilities/solvability'
+import solvability, { findIdx, findPosition } from '../utilities/solvability'
 import GamePiece from './GamePiece'
 import './styles.scss'
 class GameBoard extends Component {
@@ -15,7 +15,7 @@ class GameBoard extends Component {
 			tiles = this.generateTiles()
 		}
 		this.setState({pieces:tiles})
-	
+
 	}
   
 	generateTiles = () => {
@@ -23,7 +23,13 @@ class GameBoard extends Component {
 		return shuffle(tiles)
 	}
 
-	
+	handleGamePieceClick = (num) => {
+		const { pieces } = this.state
+		// Get location of clicked piece
+		console.log("location of", num, findPosition(pieces, findIdx(pieces, num)))
+		console.log("location of 0", findPosition(pieces, findIdx(pieces, 0)));
+		// Get location of "0"
+	}
 
 	/*
 		State tracks:
@@ -52,7 +58,7 @@ class GameBoard extends Component {
 			<section>
 				<h1>15 Puzzle</h1>
 				<div className="GameBoard">
-					{ pieces.map( piece => 	<GamePiece key={piece} num={piece}/> )}
+					{ pieces.map( piece => 	<GamePiece onClick={this.handleGamePieceClick} key={piece} num={piece}/> )}
 				</div>
 			</section>
 		)
