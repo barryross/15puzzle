@@ -3,4 +3,8 @@
 	height: calc(100% * (1/4));
 	background:blue;
 	border:1px solid black;
+
+	&.blackout {
+		background:black;
+	}
 }
