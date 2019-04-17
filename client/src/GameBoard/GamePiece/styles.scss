@@ -5,7 +5,13 @@
 	border:1px solid black;
 	line-height:100px;
 
+	&:nth-of-type(1){
+		background-position:(0, 0);
+	}
+	&:nth-of-type(2){
+		background-position:(100px, 0);
+	}
 	&.blackout {
-		background:black;
+		background:black!important;
 	}
 }

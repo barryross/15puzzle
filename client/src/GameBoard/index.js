@@ -10,12 +10,14 @@ class GameBoard extends Component {
 		pieces: [],
 		moves:0,
 		inversions:null,
-		posZero:null
+		posZero:null,
+		imgUrl:null
 	}
 
 	 componentDidMount = async () => {
-		// let response =  await axios.get('/api/photos/random')
-		// console.log("RESPONSE", response)
+		let response =  await axios.get('/api/photos/random')
+		console.log("RESPONSE", response.data.response.urls.regular)
+		this.setState({imgUrl:response.data.response.urls.regular})
 		let tiles = this.generateTiles();
 		// while (!solvability(tiles)){
 		// 	tiles = this.generateTiles()
@@ -26,7 +28,7 @@ class GameBoard extends Component {
 	generateTiles = () => {
 	// 	let tiles  = [...Array(16).keys()]
 	// 	tiles =  shuffle(tiles)
-	let tiles = [1,2,3,4,5,6,7,8,9, 10, 0, 15,13, 14, 12, 11]
+	let tiles = [0,1,2,3,4,5,6,7,8,9, 10, 11, 12, 13, 14, 15]
 	console.log("solva", solvability(tiles))
 		return tiles
 	}
@@ -69,7 +71,7 @@ class GameBoard extends Component {
 	}
 
 	render(){
-		const { pieces, moves, inversions } = this.state
+		const { pieces, moves, inversions, imgUrl } = this.state
 		let idxZero = findIdx(pieces, 0)
 		let posZero = findPosition(pieces, idxZero)
 		if(this.state.inversions === 0 && posZero.x === 4 && posZero.y ==1){
@@ -81,7 +83,7 @@ class GameBoard extends Component {
 				<section className="GameBoard-container">
 					<header>Moves : {moves}  Inversions: {inversions} </header>
 					<div className="GameBoard">
-						{ pieces.map( piece => 	<GamePiece onClick={this.handleGamePieceClick} key={piece} num={piece}/> )}
+						{ pieces.map( piece => 	<GamePiece position={()=>findPosition(pieces, piece)} imgUrl={imgUrl} onClick={this.handleGamePieceClick} key={piece} num={piece}/> )}
 					</div>
 				</section>
 			)
