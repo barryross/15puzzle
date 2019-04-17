@@ -1,68 +1,129 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 15 Puzzle
 
-## Available Scripts
+This app generates a solveable 15-puzzle based off of a randomly selected image retrieved from the [Unsplash API](https://unsplash.com/developers)
 
-In the project directory, you can run:
+This is a Node.js/React web app
 
-### `npm start`
+## Technical Overview
+The meat and potatoes of this project is a React app, based off of Create React App (CRA).  In an effort to obscure the api key, a Node server is being used as a proxy for the api call to Unsplash. 
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+These instructions will get you a copy of the project up and running on your local machine, and you too, enjoy the puzzle.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You will need a valid Unsplash API key.  You can [obtain that here](https://unsplash.com/developers).  
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Installing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Clone the repo and navigate into the folder:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+cd 15-puzzle-unsplash
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Install the dependencies for the project by running the following command from the project's root:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm install
+```
 
-## Learn More
+This will install all necessary dependencies.  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a `.env` file in `/server` and place your api key in there.   Your folder structure should look like this:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+/15-puzzle-unsplash
+ /client
+ ...
+ /server
+ ...
+ .env
+```
 
-### Code Splitting
+```
+# .env
+UNSPLASH_API_KEY=<YOUR_API_KEY_HERE>
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+At this point, you should be ready to run!
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+## Development
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+From the project root, go ahead and start the app:
 
-### Advanced Configuration
+```
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Build
 
-### `npm run build` fails to minify
+From the project root, go ahead and run 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+npm run build-client
+```
+
+You should now have an updated `/build` folder in `/15-puzzle-unsplash/client/`
+
+
+
+## Running a production build
+
+From the project root, go ahead and run the following command which creates a client build, starts the back-end server and runs the client build.
+
+```
+npm run start-prod
+
+```
+
+
+
+## Built With
+
+* [Creact React App](https://github.com/facebook/create-react-app)
+
+* [React Redux](https://github.com/reduxjs/react-redux)
+
+* [Redux Saga](https://github.com/redux-saga/redux-saga)
+
+
+
+## Future Development Considerations
+
+##### Testing
+
+- Create tests to ensure custom components such as `<GamePiece/>` render what they are supposed to, when they are supposed to
+- Incorporate integration tests to ensure action creators, sagas and reducers are working together properly to update the store
+- Incorporate e2e tests in the browser to test overall user experience
+
+
+#### Performance & Scalability
+- Review current performance and number of times components are rendering unnecessarily, use `shouldComponentUpdate()` where helpful
+- Consider using a library such as [Immutable.js](https://github.com/immutable-js/immutable-js) to help insure immutability is maintained as the app grows
+- Consider using memoized selectors to reduce excess rendering of components ([reselect](https://github.com/reduxjs/reselect))
+
+#### Refactoring
+
+- Disable Redux DevTools for production build
+
+## Authors
+
+* **Barry Ross** 
+
+## References
+
+- [Setting up React/Node Project](https://www.codementor.io/kakarganpat/how-to-setup-react-and-node-js-in-a-project-koxwqbssl) - Very helpful tutorial regarding using node as a proxy in conjuction with React
+- [3 Ways to Solve a 15 Puzzle](https://www.wikihow.com/Solve-a-15-Puzzle)
+- [How to Check if a 15 Puzzle is Solveable](https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/)
+- [JavaScript 15 Puzzle](https://codepen.io/declanwhelan/pen/rsntC)
+- [Building a 15 Puzzle in Defold](https://www.defold.com/tutorials/15-puzzle/)
