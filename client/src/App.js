@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import GameBoard from './GameBoard'
+import Puzzle from './Puzzle'
+import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <GameBoard/>
+				<section className="Gameboards-container">
+					<Puzzle/>
+					{/* <Puzzle/>
+					<Puzzle/> */}
+				</section>
       </div>
     );
   }
