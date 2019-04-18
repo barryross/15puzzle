@@ -1,0 +1,11 @@
+.GamePiece{
+	width: calc(100% * (1/4));
+	height: calc(100% * (1/4));
+	background:lightgreen;
+	border:1px solid black;
+	line-height:100px;
+
+	&.blackout {
+		background:black!important;
+	}
+}
