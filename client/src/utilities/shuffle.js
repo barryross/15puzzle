@@ -1,9 +1,5 @@
-// taken from https://bost.ocks.org/mike/shuffle/
-
-
 export default (array) => {
   var m = array.length, t, i;
-
   // While there remain elements to shuffle…
   while (m) {
 
@@ -15,6 +11,5 @@ export default (array) => {
     array[m] = array[i];
     array[i] = t;
   }
-
   return array;
 }
