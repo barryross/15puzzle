@@ -9,7 +9,8 @@ router.get('/:random', async (req, res, next) => {
     let response =  await axios.get(`${UNSPLASH_API_HOST}/photos/random?client_id=${process.env.UNSPLASH_API_KEY}`)
 		res.json({success:true, response:response.data})
 	} catch (error) { 
-		res.json({success:false, error})
+		console.log("ERROR", error.response.data)
+		res.json({success:false, message:error.response.data})
   }
 });
 
