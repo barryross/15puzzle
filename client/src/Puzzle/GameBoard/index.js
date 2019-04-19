@@ -2,14 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import GamePiece from '../GamePiece'
 import VictoryModal from '../VictoryModal'
-import {findIdx, findPosition } from '../../utilities/gameboard'
-
+import {findPosition } from '../../utilities/gameboard'
 
 import './styles.scss'
 
 const GameBoard = ({pieces, imgUrl, handleGamePieceClick, showModal, closeModal, restart}) => {
-	let idxZero = findIdx(pieces, 0)
-	let posZero = findPosition(idxZero)
 
 	return (
 		<div className="GameBoard">
@@ -17,17 +14,17 @@ const GameBoard = ({pieces, imgUrl, handleGamePieceClick, showModal, closeModal,
 				let position = findPosition(piece)
 				return (
 					<GamePiece 
-						position={position} 
-						imgUrl={imgUrl} 
-						onClick={handleGamePieceClick} 
-						key={piece} 
-						num={piece}/> 
+							position={position} 
+							imgUrl={imgUrl} 
+							onClick={handleGamePieceClick} 
+							key={piece} 
+							num={piece}/> 
 						)
 				})}
-			{showModal &&	
-			<VictoryModal 
-				closeModal={closeModal} 
-				restart={restart} show={showModal} /> }
+			{ showModal &&	
+					<VictoryModal 
+						closeModal={closeModal} 
+						restart={restart} show={showModal} /> }
 		</div>
 	)
 }

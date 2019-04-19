@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {isSolveable, isSwappable, countInversions, findIdx, findPosition } from '../utilities/gameboard'
+import { isSwappable, countInversions, findIdx, findPosition } from '../utilities/gameboard'
 import PuzzleHeader from './Header'
 import GameBoard from './GameBoard'
 import shuffle from '../utilities/shuffle'
@@ -18,7 +18,7 @@ class Puzzle extends Component {
 		referenceImage:true
 	}
 
-	 componentDidMount = async () => {
+	componentDidMount = async () => {
 		this.initialize()
 	}
 	
@@ -44,17 +44,20 @@ class Puzzle extends Component {
 		return tiles
 	}
 
-
+//Closes the Victory modal - which is displayed after user wins
 	closeModal = () => {
 		this.setState({showModal:false})
 	}
+
+	//Closes the victory modal and re-initalizes the game
 	restart = () => {
 		this.setState({showModal:false})
 		this.initialize()
 	}
+
 	handleGamePieceClick = (num) => {
 		const { pieces } = this.state
-		
+		//TODO - see how we can clean the following up 
 		let idxPiece = findIdx(pieces, num)
 		let idxZero = findIdx(pieces, 0)
 		let posPiece = findPosition(idxPiece)
@@ -64,16 +67,14 @@ class Puzzle extends Component {
 
 		
 	}
-
+	//TODO  let's clean this up!!
 	swapPieces = (array, idx1, idx2, newZeroPos) => {
 		let tmp = array[idx1]
 		array[idx1] = array[idx2]
 		array[idx2] = tmp
 		this.setState({pieces:array})
 		let inversions = countInversions(array)
-		console.log("Poszero", newZeroPos)
 		let showModal = inversions === 0 && newZeroPos.x === 4 && newZeroPos.y ==1
-			console.log("show modal", showModal)
 
 		this.setState(state =>{
 			return {
