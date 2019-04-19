@@ -6,7 +6,15 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-
+		.ui.slider.checkbox .box:before, .ui.slider.checkbox label:before,
+		.ui.slider.checkbox input:checked~.box:before, .ui.slider.checkbox input:checked~label:before,
+		.ui.slider.checkbox input:focus:checked~.box:before, .ui.slider.checkbox input:focus:checked~label:before
+		{
+			background:white!important;
+		}
+		.ui.slider.checkbox input:focus:checked~.box, .ui.slider.checkbox input:focus:checked~label{
+			color:white!important;
+		}
 		.checkbox{
 			margin-top:10px;
 			label{
