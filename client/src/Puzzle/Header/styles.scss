@@ -1,0 +1,18 @@
+.PuzzleHeader{
+		background:black;
+		color:white;
+		height:100px;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		.checkbox{
+			margin-top:10px;
+			label{
+				color:white!important;
+			}
+
+		}
+		.ui.slider.checkbox input:checked~.box, .ui.slider.checkbox input:checked~label{color:white!important;}
+}
