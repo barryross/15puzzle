@@ -17,7 +17,7 @@ The following libraries are also used:
 
 # Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine, and you too, enjoy the puzzle.
+These instructions will get you a copy of the project up and running on your local machine, and you can get your puzzling on.
 
 
 ## Prerequisites
@@ -30,7 +30,7 @@ You will need a valid Unsplash API key.  You can [obtain that here](https://unsp
 Clone the repo and navigate into the folder:
 
 ```
-cd 15-puzzle-unsplash
+cd 15puzzle
 ```
 
 Install the dependencies for the project by running the following command from the project's root:
@@ -44,7 +44,7 @@ This will install all necessary dependencies.
 Create a `.env` file in `/server` and place your api key in there.   Your folder structure should look like this:
 
 ```
-/15-puzzle-unsplash
+/15puzzle
  /client
  ...
  /server
@@ -79,7 +79,7 @@ From the project root, go ahead and run
 npm run build-client
 ```
 
-You should now have an updated `/build` folder in `/15-puzzle-unsplash/client/`
+You should now have an updated `/build` folder in `/15puzzle/client/`
 
 
 
@@ -107,9 +107,9 @@ When a `<GameBoard>` component mounts, we
 * We `.map()` through `pieces` and create a `<GamePiece>` for each element
   - Each `<GamePiece>` is provided the coordinates (x,y) of where that piece will be positioned in the 4 x 4 square once the puzzle is solved
 
-		When a `<GamePiece>` is clicked, its location relative to the blacked out square is calculated and if it borders the blacked out square, it the two are swapped. 
+	- When a `<GamePiece>` is clicked, its location relative to the blacked out square is calculated and if it borders the blacked out square, it the two are swapped. 
 
-		We keep track of the number of inversions on the board at any given time.  An inversion is defined as tiles that are out of order when compared to the tiles when the puzzle is solved. 
+	- We keep track of the number of inversions on the board at any given time.  An inversion is defined as tiles that are out of order when compared to the tiles when the puzzle is solved. 
 
 ```
 Indices can be thought of as:
