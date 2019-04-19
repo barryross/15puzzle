@@ -101,6 +101,10 @@ When a `<GameBoard>` component mounts, we
 * We `.map()` through `pieces` and create a `<GamePiece>` for each element
   - Each `<GamePiece>` is provided the coordinates (x,y) of where that piece will be positioned in the 4 x 4 square once the puzzle is solved
 
+		When a `<GamePiece>` is clicked, its location relative to the blacked out square is calculated and if it borders the blacked out square, it the two are swapped. 
+
+		We keep track of the number of inversions on the board at any given time.  An inversion is defined as tiles that are out of order when compared to the tiles when the puzzle is solved. 
+
 ```
 Indices can be thought of as:
 
@@ -113,7 +117,7 @@ Indices can be thought of as:
 
 ### Binding images to each `<GamePiece/>`
 - Each `<GamePiece>` is provided (via props) the url of the retrieved image from Unsplash.  
-- Every `<GamePiece>` uses this image as its `backgound-image`
+- Every `<GamePiece>` uses this image as its `background-image`
 - The `background-position` property is used to adjust the visible portion of the background image based on the `<GamePiece>`'s position on the 4x4 grid when the puzzle is solved
 
 ## Interaction
@@ -121,12 +125,6 @@ Indices can be thought of as:
 ## Built With
 
 * [Creact React App](https://github.com/facebook/create-react-app)
-
-* [React Redux](https://github.com/reduxjs/react-redux)
-
-* [Redux Saga](https://github.com/redux-saga/redux-saga)
-
-
 
 ## Future Development Considerations
 
@@ -139,8 +137,6 @@ Indices can be thought of as:
 
 ### Performance & Scalability
 - Review current performance and number of times components are rendering unnecessarily, use `shouldComponentUpdate()` where helpful
-- Consider using a library such as [Immutable.js](https://github.com/immutable-js/immutable-js) to help insure immutability is maintained as the app grows
-- Consider using memoized selectors to reduce excess rendering of components ([reselect](https://github.com/reduxjs/reselect))
 
 ### Refactoring
 

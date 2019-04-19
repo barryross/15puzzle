@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import { isSwappable, countInversions, findIdx, findPosition } from '../utilities/gameboard'
+import { isSolveable, isSwappable, countInversions, findIdx, findPosition } from '../utilities/gameboard'
 import PuzzleHeader from './Header'
 import GameBoard from './GameBoard'
 import shuffle from '../utilities/shuffle'
@@ -31,16 +31,14 @@ class Puzzle extends Component {
 			this.setState({imgUrl:regular})
 		}
 		let tiles = this.generateTiles();
-		//  while (!isSolveable(tiles)){
-		// 	tiles = this.generateTiles()
-		// }
+		 while (!isSolveable(tiles)){
+			tiles = this.generateTiles()
+		}
 		this.setState({pieces:tiles, inversions:countInversions(tiles)})
 	}
 	generateTiles = () => {
 		let tiles  = [...Array(16).keys()]
 		tiles =  shuffle(tiles)
-		tiles = [1,2,3,4,5,6,7,8,9,10,0,15,13,14,12,11]
-
 		return tiles
 	}
 
@@ -49,7 +47,7 @@ class Puzzle extends Component {
 		this.setState({showModal:false})
 	}
 
-	//Closes the victory modal and re-initalizes the game
+	//Closes the victory modal and re-initializes the game
 	restart = () => {
 		this.setState({showModal:false})
 		this.initialize()

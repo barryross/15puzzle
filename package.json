@@ -17,5 +17,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "3.5.1"
+  },
+  "dependencies": {
+    "semantic-ui-css": "^2.4.1"
   }
 }
