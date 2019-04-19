@@ -7,7 +7,7 @@ import {findIdx, findPosition } from '../../utilities/gameboard'
 
 import './styles.scss'
 
-const GameBoard = ({pieces, imgUrl, handleGamePieceClick, showModal}) => {
+const GameBoard = ({pieces, imgUrl, handleGamePieceClick, showModal, closeModal, restart}) => {
 	let idxZero = findIdx(pieces, 0)
 	let posZero = findPosition(idxZero)
 
@@ -24,7 +24,10 @@ const GameBoard = ({pieces, imgUrl, handleGamePieceClick, showModal}) => {
 						num={piece}/> 
 						)
 				})}
-			{showModal &&	<VictoryModal show={showModal} /> }
+			{showModal &&	
+			<VictoryModal 
+				closeModal={closeModal} 
+				restart={restart} show={showModal} /> }
 		</div>
 	)
 }

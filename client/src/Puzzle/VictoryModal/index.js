@@ -2,13 +2,13 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import './styles.scss'
 
-const VictoryModal = () => {
+const VictoryModal = ({closeModal, restart}) => {
  return (
 	<div className="VictoryModal">
 		<h1>You won!</h1>
 		<div className="buttons">
 			<Button color='black' 
-			// onClick={this.close}
+			onClick={closeModal}
 			>
 				Cancel
 			</Button>
@@ -17,7 +17,7 @@ const VictoryModal = () => {
 				icon='checkmark'
 				labelPosition='right'
 				content="Play again"
-				// onClick={this.close}
+				onClick={restart}
 			/>
 		</div>
 	</div>

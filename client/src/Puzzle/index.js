@@ -45,7 +45,13 @@ class Puzzle extends Component {
 	}
 
 
-
+	closeModal = () => {
+		this.setState({showModal:false})
+	}
+	restart = () => {
+		this.setState({showModal:false})
+		this.initialize()
+	}
 	handleGamePieceClick = (num) => {
 		const { pieces } = this.state
 		
@@ -54,23 +60,28 @@ class Puzzle extends Component {
 		let posPiece = findPosition(idxPiece)
 		let posZero = findPosition(idxZero)
 
-		if ( isSwappable(posPiece, posZero)) this.swapPieces(pieces, idxPiece, idxZero)
+		if ( isSwappable(posPiece, posZero)) this.swapPieces(pieces, idxPiece, idxZero, posPiece)
 
-		let inversions = countInversions(pieces)
-
-		this.setState(state =>{
-			return {
-				moves:state.moves+1,
-				inversions
-			}
-		})
+		
 	}
 
-	swapPieces = (array, idx1, idx2) => {
+	swapPieces = (array, idx1, idx2, newZeroPos) => {
 		let tmp = array[idx1]
 		array[idx1] = array[idx2]
 		array[idx2] = tmp
 		this.setState({pieces:array})
+		let inversions = countInversions(array)
+		console.log("Poszero", newZeroPos)
+		let showModal = inversions === 0 && newZeroPos.x === 4 && newZeroPos.y ==1
+			console.log("show modal", showModal)
+
+		this.setState(state =>{
+			return {
+				moves:state.moves+1,
+				inversions,
+				showModal
+			}
+		})
 	}
 
 	toggleReferenceImage = () => {
@@ -78,9 +89,10 @@ class Puzzle extends Component {
 	}
 
 	render(){
-		
-		const { pieces, moves, inversions, imgUrl, referenceImage} = this.state
-			return(
+
+		const { pieces, moves, inversions, imgUrl, referenceImage, showModal} = this.state
+		const { closeModal, restart }	= this
+		return(
 				<section className="Puzzle">
 					<PuzzleHeader
 						toggle={this.toggleReferenceImage}
@@ -92,7 +104,9 @@ class Puzzle extends Component {
 					<GameBoard
 						imgUrl={imgUrl}
 						pieces={pieces}
-						showModal={inversions}
+						showModal={showModal}
+						closeModal={closeModal}
+						restart={restart}
 						handleGamePieceClick={this.handleGamePieceClick}
 					/>
 					{ referenceImage && 
