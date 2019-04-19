@@ -1,23 +1,12 @@
 .Puzzle{
-	margin: 0 5px;
-	header{
-		background:lightgoldenrodyellow;
-		height:100px;
-		display:flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+	margin: 25px 5px;
+	font-family:Brandon Text,sans-serif;
 
 	.Reference-container{
 		position:relative;
 		background-position:(0px 0px);
 		width:400px;
 		height:400px;
-		// .reference-img{
-		// 	position:absolute;
-		// 	clip:rect(0px,400px,400px,0px);
-		// }
 	}
 
 }
