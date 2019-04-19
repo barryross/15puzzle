@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+}
+
+.App {
+	text-align: center;
+	padding-top: 50px;
+	&>header{
+		color:white;
+		padding:15px 0;
+		background-image:url('https://cdn.pixabay.com/photo/2016/10/20/20/58/banner-1756639_1280.jpg');
+		background-size:cover;
+	}	
+}
+
+.Gameboards-container{
+	display:flex;
+	justify-content: center;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
