@@ -146,6 +146,10 @@ Indices can be thought of as:
 ### Performance & Scalability
 - Review current performance and number of times components are rendering unnecessarily, use `shouldComponentUpdate()` where helpful
 
+### Refactoring
+- Look into cleaning up the main `App.js` file - perhaps create additional utilities fo "position" and "index" related functions
+
+
 # Authors
 
 * **Barry Ross** 
