@@ -3,16 +3,14 @@ import PropTypes from 'prop-types';
 import './styles.scss'
 
 const GamePiece = ({num, onClick, imgUrl, position}) => {
-	console.log("position", position)
-	let x = position.x === 1 ? 0 : position.x
-	console.log("x", x)
+	let x = position.x
 	return (
 		<div 
 			style={
 				{
 					backgroundImage:`url(${imgUrl})`,
 					backgroundPosition: 
-						`${x * 100}px
+						`${(-(x * 100)+100)}px
 						${-((4 - position.y) * 100)}px`
 				}
 			}
