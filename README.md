@@ -2,10 +2,17 @@
 
 This app generates a solveable 15-puzzle based off of a randomly selected image retrieved from the [Unsplash API](https://unsplash.com/developers)
 
-This is a Node.js/React web app
+
 
 # Technical Overview
-The meat and potatoes of this project is a React app, based off of Create React App (CRA).  In an effort to obscure the api key, a Node server is being used as a proxy for the api call to Unsplash. 
+The meat and potatoes of this project is a React app, based off of Create React App (CRA).  
+
+In an effort to obscure the api key, a Node server is being used as a proxy for the api call to Unsplash. 
+
+The following libraries are also used:
+
+- [Axios](https://github.com/axios/axios)
+- [Semantic Ui React](https://react.semantic-ui.com/)
 
 
 # Getting Started
@@ -16,7 +23,6 @@ These instructions will get you a copy of the project up and running on your loc
 ## Prerequisites
 
 You will need a valid Unsplash API key.  You can [obtain that here](https://unsplash.com/developers).  
-
 
 
 ## Installing
