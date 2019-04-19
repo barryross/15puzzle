@@ -14,6 +14,8 @@ The following libraries are also used:
 - [Axios](https://github.com/axios/axios)
 - [Semantic Ui React](https://react.semantic-ui.com/)
 
+React-redux was purposely not used as it was deemed more appropriate to let each `<Puzzle>` manage its own internal state.  
+
 
 # Getting Started
 
@@ -111,6 +113,8 @@ When a `<GameBoard>` component mounts, we
 
 	- We keep track of the number of inversions on the board at any given time.  An inversion is defined as any instance whereby a tile's current index is lower than its index in th solved puzzle. 
 
+	- When there are no inversions present, and the blacked out square is in the bottom-right corner of the board...the puzzle is solved!
+
 ```
 Indices can be thought of as:
 
@@ -126,7 +130,6 @@ Indices can be thought of as:
 - Every `<GamePiece>` uses this image as its `background-image`
 - The `background-position` property is used to adjust the visible portion of the background image based on the `<GamePiece>`'s position on the 4x4 grid when the puzzle is solved
 
-## Interaction
 
 ## Built With
 
@@ -136,17 +139,12 @@ Indices can be thought of as:
 
 ### Testing
 
-- Create tests to ensure custom components such as `<GamePiece/>` render what they are supposed to, when they are supposed to
-- Incorporate integration tests to ensure action creators, sagas and reducers are working together properly to update the store
+- Create tests to ensure custom components such as `<GamePiece>` render what they are supposed to, when they are supposed to
 - Incorporate e2e tests in the browser to test overall user experience
 
 
 ### Performance & Scalability
 - Review current performance and number of times components are rendering unnecessarily, use `shouldComponentUpdate()` where helpful
-
-### Refactoring
-
-- Disable Redux DevTools for production build
 
 # Authors
 
