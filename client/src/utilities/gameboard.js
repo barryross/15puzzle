@@ -8,7 +8,7 @@ the blank is on an odd row counting from the bottom (last, third-last, fifth-las
 export const isSolveable = (array) => {
 	let inv = countInversions(array)
 	let idxZero = findIdx(array, 0) //0 represents empty square
-	let posZero = findPosition(array, idxZero)
+	let posZero = findPosition(idxZero)
 
 	if (posZero.y % 2 === 1 && inv % 2 === 0){
 		console.log("solveable!")
@@ -24,8 +24,6 @@ export const isSolveable = (array) => {
 }
 
 export const isSwappable = (posPiece, posZero, pieces) =>{
-
-	console.log("posPiece", posPiece, "posZero", posZero)
 	if(posPiece.y === posZero.y && Math.abs(posPiece.x - posZero.x) === 1){
 		return true
 	}else if(posPiece.x === posZero.x && (Math.abs(posPiece.y - posZero.y) === 1)){
@@ -75,7 +73,6 @@ export const findPosition = (idx) => {
 /* Provided an array of integers (array), and an integer (value), the following
 returns the index of the value in the array, or -1 if not present
 */
-
 export const findIdx = (array, value) => {
 		return array.indexOf(value)
 }
