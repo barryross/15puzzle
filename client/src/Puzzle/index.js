@@ -73,7 +73,7 @@ class Puzzle extends Component {
 		array[idx2] = tmp
 		this.setState({pieces:array})
 		let inversions = countInversions(array)
-		let showModal = inversions === 0 && newZeroPos.x === 3 && newZeroPos.y ===1
+		let showModal = inversions === 0 && newZeroPos.x === 3 && newZeroPos.y ===1 //Todo ...clean this up
 
 		this.setState(state =>{
 			return {
