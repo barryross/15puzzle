@@ -4,6 +4,7 @@ import './styles.scss'
 
 const GamePiece = ({num, onClick, imgUrl, position}) => {
 	let x = position.x
+	let y = position.y
 	return (
 		<div 
 			style={

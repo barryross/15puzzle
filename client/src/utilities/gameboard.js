@@ -62,11 +62,18 @@ where the bottom-left is (1,1) and the top-right is (4,4)
 */
 
 export const findPosition = (idx) => {
-	idx++
+	
+	// idx++
 	let x, y
-	x = idx - (Math.ceil((idx)/4) - 1) * 4
-	y =  5 - Math.ceil((idx) / 4) //+ 1 compensates for "0"
-	return {x, y}
+	if(idx > 0){
+		x = idx - (Math.ceil((idx)/4) - 1) * 4
+		y =  5 - Math.ceil((idx) / 4) //+ 1 compensates for "0"
+		console.log("idx", idx, x, y)
+		return {x, y}
+	}else{
+		return{x:4, y:1}
+	}
+
 }
 
 

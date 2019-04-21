@@ -38,7 +38,8 @@ class Puzzle extends Component {
 	}
 	generateTiles = () => {
 		let tiles  = [...Array(16).keys()]
-		tiles =  shuffle(tiles)
+		// tiles =  shuffle(tiles)
+		// tiles = [1,2,3,4,5,6,7,8,9,10, 0, 15, 13, 14, 12, 11] for testing
 		return tiles
 	}
 
@@ -72,7 +73,7 @@ class Puzzle extends Component {
 		array[idx2] = tmp
 		this.setState({pieces:array})
 		let inversions = countInversions(array)
-		let showModal = inversions === 0 && newZeroPos.x === 4 && newZeroPos.y ==1
+		let showModal = inversions === 0 && newZeroPos.x === 3 && newZeroPos.y ===1
 
 		this.setState(state =>{
 			return {
